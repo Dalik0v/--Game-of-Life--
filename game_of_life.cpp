@@ -6,15 +6,8 @@
 #include <sstream>
 #include <set>
 #include <cstring>
-
-#ifdef _WIN32
-#include <conio.h> // For _kbhit and _getch on Windows
-#else
-#include <stdio.h> // For getchar on Linux
 #include <termios.h>
-#include <unistd.h>
 #include <fcntl.h>
-#endif
 
 using namespace std;
 
@@ -115,10 +108,6 @@ void readBMP(const string& fileName, char universe[HEIGHT][WIDTH]) {
     bmpFile.close();
 }
 
-#ifdef _WIN32
-// Windows version for kbhit and getch
-#else
-// Linux version for kbhit
 int kbhit() {
     struct termios oldt, newt;
     int ch;
@@ -143,7 +132,6 @@ int kbhit() {
 
     return 0;
 }
-#endif
 
 int main() {
     char universe[HEIGHT][WIDTH] = {};
@@ -156,15 +144,11 @@ int main() {
     while (true) {
         display(universe);
         update(universe);
-        usleep(200000);
+        usleep(500000);
 
         // Check for key press
         if (kbhit()) {
-#ifdef _WIN32
-            char key = _getch();
-#else
             char key = getchar();
-#endif
             if (key == 'q' || key == 'Q') {
                 break;
             }
