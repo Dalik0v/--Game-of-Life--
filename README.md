@@ -32,7 +32,7 @@ The Game of Life is a cellular automaton invented by mathematician John Conway. 
 - **readBMP**: Reads the initial configuration of the universe from a BMP file.
 - **kbhit**: Checks if a key was pressed on the keyboard (for exiting the game).
 
-### Handy Tricks Found Online with a Little Help from ChatGPT
+### Handy Tricks Found Online 
 
 1. **tcsetattr**: This function is used to set terminal parameters.
 2. **fcntl**: The `fcntl` function is used to manipulate file descriptors.
